@@ -21,7 +21,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t dockernadeem7/maven-web-app:7 .
+        run: |
+            docker pull docker.io/dockernadeem7/maven-web-app:7
+            docker build -t dockernadeem7/maven-web-app:7 .
 
       - name: Scan Docker image with Trivy
         run: |
