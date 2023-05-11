@@ -22,8 +22,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-            docker pull docker.io/dockernadeem7/maven-web-app:7
-            docker build -t dockernadeem7/maven-web-app:7 .
+            docker build -t docker.io/dockernadeem7/maven-web-app:7 .
 
       - name: Scan Docker image with Trivy
         run: |
