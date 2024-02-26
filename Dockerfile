@@ -1,5 +1,14 @@
-FROM ghcr.io/aquasecurity/trivy:0.49.0
-COPY entrypoint.sh /
-RUN apk --no-cache add bash curl npm
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# Use Alpine Linux as base image
+FROM alpine:latest
+
+# Install packages for testing
+RUN apk --no-cache add curl git
+
+# Set the working directory
+WORKDIR /app
+
+# Copy sample files for testing
+COPY . .
+
+# Run Trivy scan on the current directory
+CMD ["trivy", "."]
